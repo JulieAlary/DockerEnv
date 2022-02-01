@@ -1,6 +1,6 @@
 # A docker stack with nginx, php 7.2 and mysql 5.7 for symfony project
 
-Copy the project that you want in app folder or create it
+### Copy the project that you want in app folder or create it
 
 First start the container 
 
