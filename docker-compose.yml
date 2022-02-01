@@ -1,0 +1,47 @@
+version: "3.4"
+
+services:
+
+  php:
+    build:
+      context: docker/php
+    volumes:
+      - application:/opt/www/symfony
+    working_dir: /opt/www/symfony
+    tty: true
+    networks:
+      apiplatformtuto:
+        aliases:
+          - apiplatformtuto_php
+
+  nginx:
+    image: nginx:1.13.6
+    volumes:
+      - application:/opt/www/symfony
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/symfony.vhost:/etc/nginx/sites-enabled/symfony.vhost
+    depends_on:
+      - php
+    networks:
+      apiplatformtuto:
+        aliases:
+          -  apiplatformtuto_nginx
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=apipfatformtuto
+      - MYSQL_ROOT_PASSWORD=azerty
+      - MYSQL_ALLOW_EMPTY_PASSWORD=no
+
+    networks:
+      apiplatformtuto:
+         aliases:
+          - apiplatformtuto_db
+
+volumes:
+  application:
+    name: apiplatformtuto_application
+

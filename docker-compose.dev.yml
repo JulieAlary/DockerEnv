@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+
+  nginx:
+    volumes:
+      - ./app:/opt/www/symfony
+    ports:
+      - 8099:8090
+  php:
+    volumes:
+      - ./app:/opt/www/symfony
+
+networks:
+  apiplatformtuto:
+
