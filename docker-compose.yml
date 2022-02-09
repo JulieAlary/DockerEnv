@@ -10,9 +10,9 @@ services:
     working_dir: /opt/www/symfony
     tty: true
     networks:
-      apiplatformtuto:
+      dockerenv:
         aliases:
-          - apiplatformtuto_php
+          - dockerenv_php
 
   nginx:
     image: nginx:1.13.6
@@ -23,25 +23,25 @@ services:
     depends_on:
       - php
     networks:
-      apiplatformtuto:
+      dockerenv:
         aliases:
-          -  apiplatformtuto_nginx
+          - dockerenv_nginx
 
   db:
     image: mysql:5.7
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_DATABASE=apipfatformtuto
+      - MYSQL_DATABASE=dockerenv
       - MYSQL_ROOT_PASSWORD=azerty
       - MYSQL_ALLOW_EMPTY_PASSWORD=no
 
     networks:
-      apiplatformtuto:
+      dockerenv:
          aliases:
-          - apiplatformtuto_db
+          - dockerenv_db
 
 volumes:
   application:
-    name: apiplatformtuto_application
+    name: dockerenv_application
 

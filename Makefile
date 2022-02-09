@@ -2,12 +2,12 @@ CI_COMMIT_TAG ?= 1.0.0
 
 .PHONY: all build
 
-PORT_ADMIN = $$(docker port apiplatformtuto_nginx_1 8090/tcp | sed 's/0.0.0.0//')
+PORT_ADMIN = $$(docker port dockerenv_nginx_1 8090/tcp | sed 's/0.0.0.0//')
 
-DOCKER_COMPOSE = docker-compose -p apiplatformtuto -f docker-compose.yml -f docker-compose.dev.yml
+DOCKER_COMPOSE = docker-compose -p dockerenv -f docker-compose.yml -f docker-compose.dev.yml
 
-CONTAINER_ID_NGINX = $$(docker container ls -f "name=apiplatformtuto_nginx" -q)
-CONTAINER_ID_PHP = $$(docker container ls -f "name=apiplatformtuto_php" -q)
+CONTAINER_ID_NGINX = $$(docker container ls -f "name=dockerenv_nginx" -q)
+CONTAINER_ID_PHP = $$(docker container ls -f "name=dockerenv_php" -q)
 
 NGINX = docker exec -ti $(CONTAINER_ID_NGINX)
 PHP = docker exec -ti $(CONTAINER_ID_PHP)
@@ -22,7 +22,7 @@ COLOR_TITLE_BLOCK	= \033[0;44m\033[37m
 SF_ENV = dev
 ## Help
 help:
-	@printf "${COLOR_TITLE_BLOCK}Api platform tuto${COLOR_RESET}\n"
+	@printf "${COLOR_TITLE_BLOCK}docker env${COLOR_RESET}\n"
 	@printf "\n"
 	@printf "${COLOR_COMMENT}Usage:${COLOR_RESET}\n"
 	@printf " make [target]\n\n"
@@ -118,7 +118,7 @@ init-project: composer-install db-init
 db-init: db-drop db-create db-schema-update
 
 db-connect:
-	$(DB) mysql -u root --password=azerty apiplatformtuto
+	$(DB) mysql -u root --password=azerty dockerenv
 
 db-drop:
 	$(PHP) bin/console doctrine:database:drop --if-exists --force --env=$(SF_ENV)

@@ -2,6 +2,11 @@
 
 ### Copy the project that you want in app folder or create it
 
+/!\Requirements : docker & docker-compose /!\
+
+copy all the symfony files et folder you want and paste it in "app" folder.
+Change the php version in php/Dockerfile to you need (ex: 7.2, 8.0....)
+
 First start the container 
 
 ```make start```

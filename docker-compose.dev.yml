@@ -12,5 +12,5 @@ services:
       - ./app:/opt/www/symfony
 
 networks:
-  apiplatformtuto:
+  dockerenv:
 
