@@ -1,10 +1,8 @@
-# A docker stack with nginx, php 7.2 and mysql 5.7 for symfony project
-
-### Copy the project that you want in app folder or create it
+# A docker stack with nginx, php and mysql 5.7 for symfony project
 
 /!\Requirements : docker & docker-compose /!\
 
-copy all the symfony files et folder you want and paste it in "app" folder.
+- Copy all the symfony files & folder you want and paste it in "app" folder.
 Change the php version in php/Dockerfile to you need (ex: 7.2, 8.0....)
 
 First start the container 
