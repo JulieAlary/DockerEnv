@@ -10,6 +10,7 @@ First start the container
 ```make start```
 
 Then init the project: composer install - create db & yarn install
+/!\ Don't forgive to set the app/.env file with DATABASE_URL /!\
 
 ```make init-project```
 
